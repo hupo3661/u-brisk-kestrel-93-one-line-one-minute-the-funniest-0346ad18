@@ -30,6 +30,9 @@ def main() -> None:
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "w", encoding="utf-8") as f:
         f.write(line)
+    with open(out, encoding="utf-8") as f:
+        if f.read() != line:
+            raise SystemExit("entry file does not match the line after writing")
     print(line)
 
 
